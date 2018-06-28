@@ -5,29 +5,35 @@ function buyButton()
     
     if(secondsToBuy == NaN)
     {
-        label("Not a number");
+        alert("Not a number");
         return;
     }
 
     secondsToBuy = secondsToBuy * 60 * 60;
-    var remoteUrl = remoteServerIp + ":" + serverPort + "/parks/purchase.psp?client=" + licensePlate + "&time=" + secondsToBuy;
+    var remoteUrl = "http://" + remoteServerIp + ":" + serverPort + "/parks/purchase.psp?client=" + licensePlate + "&time=" + secondsToBuy;
  
     alert(remoteUrl);
 
-    $.ajax({
-        url : remoteUrl,
-        success : function(data)
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function()
+    {
+        if(this.readyState== 4 &&this.status == 200)
         {
-            label("Paid for parking !");
-        },
-        error : function()
-        {
-            label("Connection to server failed");
+            alert("OK");
         }
-    });
-}
+    }
+    xhttp.open("GET", remoteUrl, true);
+    xhttp.send();
 
-function label(txt)
-{
-    $("#label").text(txt);
+    // $.ajax({
+    //     url : remoteUrl,
+    //     success : function(data)
+    //     {
+    //         alert("Paid for parking !");
+    //     },
+    //     error : function()
+    //     {
+    //         alert("Connection to server failed");
+    //     }
+    // });
 }
