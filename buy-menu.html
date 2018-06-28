@@ -4,6 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/w3mobile.css">
         <link rel="stylesheet" href="css/design.css">
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="constants.js"></script>
+        <script src="js/buy-menu.js"></script>
     </head>
 
     <body>
@@ -30,9 +33,24 @@
                 </td>
             </tr>
 
+
             <tr align="center">
                 <td>
-                    <button id="pay-button">Pay</button>
+                    Hours :
+                    <input id="hours-number" type="text"> 
+                </td>
+            </tr>
+
+            <tr align="center">
+                <td>
+                    <button onclick="buyButton()">Pay</button>
+                </td>
+            </tr>
+
+            <tr align="center">
+                <td>
+                    <h3 id="label">
+                    </h3>
                 </td>
             </tr>
 
